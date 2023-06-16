@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="/css/styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+		/>
+		<script
+			type="text/javascript"
+			src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"
+		></script>
+		<link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon" />
+		<title>Game</title>
+		<style>
+			.box {
+				width: 30px;
+				height: 60px;
+				border: 1px solid #ffffff;
+				background: rgb(132, 43, 191);
+				background: linear-gradient(
+					163deg,
+					rgba(132, 43, 191, 1) 0%,
+					rgba(167, 198, 255, 1) 50%,
+					rgba(255, 33, 33, 1) 100%
+				);
+			}
+			.snake1 {
+				left: 250px;
+				position: absolute;
+				top: 100px;
+				z-index: 200;
+			}
+			.snake2 {
+				left: 600px;
+				position: absolute;
+				top: 190px;
+				z-index: 200;
+			}
+			.snake3 {
+				left: 950px;
+				position: absolute;
+				top: 300px;
+				z-index: 200;
+				height: 350px;
+			}
+			.snake4 {
+				left: 200px;
+				position: absolute;
+				top: 350px;
+				z-index: 200;
+				height: 300px;
+			}
+			.snake5 {
+				left: 400px;
+				position: absolute;
+				top: 490px;
+				z-index: 200;
+				height: 350px;
+			}
+			.snake6 {
+				left: 720px;
+				position: absolute;
+				top: 100px;
+				z-index: 200;
+				height: 150px;
+			}
+			.ladder1 {
+				left: 460px;
+				position: absolute;
+				top: 300px;
+				z-index: 200;
+				height: 350px;
+			}
+			.ladder2 {
+				left: 900px;
+				position: absolute;
+				top: 180px;
+				z-index: 200;
+				height: 280px;
+			}
+			.ladder3 {
+				left: 20px;
+				position: absolute;
+				top: 180px;
+				z-index: 200;
+				height: 280px;
+			}
+			button {
+				display: inline-block;
+				padding: 5px;
+				width: 150px;
+				background-color: #fffc43;
+				border-radius: 20px;
+				color: #080808;
+				text-align: center;
+				font-size: 30px;
+				transition: all 0.5s;
+				margin: 2px;
+			}
+
+			button:hover {
+				background-color: #a751f7;
+			}
+		</style>
+	</head>
+
+	<body class="bg">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="">Snakes&Ladders</a>
+
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="../index.html"
+								>Home</a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="../html/game.html">Game</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link active" href="../html/leaderboard.html"
+								>Leader Board</a
+							>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link active dropdown-toggle"
+								href="#"
+								id="navbarDropdown"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								Registration
+							</a>
+
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li>
+									<a class="dropdown-item" href="../html/login.html">Login</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="../html/signin.html"
+										>Sign In</a
+									>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="../html/rules.html">Rules</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container h-100 my-5"></div>
+		<img src="../images/snake1.png" class="snake1" id="s1" alt="snake1" />
+		<img src="../images/snake2.png" class="snake2" id="s2" alt="snake2" />
+		<img src="../images/snake3.png" class="snake3" id="s3" alt="snake3" />
+		<img src="../images/snake4.png" class="snake4" id="s4" alt="snake4" />
+		<img src="../images/snake5.png" class="snake5" id="s5" alt="snake5" />
+		<img src="../images/snake6.png" class="snake6" id="s6" alt="snake6" />
+		<img src="../images/ladder.png" class="ladder1" id="lad1" alt="ladder" />
+		<img src="../images/ladder2.png" class="ladder2" id="lad2" alt="ladder" />
+		<img src="../images/ladder3.png" class="ladder3" id="lad3" alt="ladder" />
+		<script>
+			var k = 100;
+			var curposition = 0;
+			var isgamestarted = 0;
+
+			var board = "<div class='container' id='board' >";
+			for (var j = 1; j <= 10; j++) {
+				board += "<div class='row'>";
+				for (var i = 1; i <= 10; i++) {
+					board += "<div class='col box' id='box" + k + "'>" + k + "</div>";
+					k--;
+				}
+				board += "</div>";
+			}
+			board += "</div>";
+			document.write(board);
+
+			function movepawn(num) {
+				$("#btnrolldie").prop("disabled", true);
+				var issnake = false;
+				var box = $("#box" + num);
+				if (box == null) {
+					alert(box);
+					return;
+				}
+				var pos = box.position();
+
+				$("#pawn").css({ top: pos.top, left: pos.left, position: "absolute" });
+
+				if (num == 86) {
+					num = 34;
+					curposition = num;
+					issnake = true;
+				} else if (num == 26) {
+					num = 56;
+					curposition = num;
+					issnake = true;
+				} else if (num == 99) {
+					num = 67;
+					curposition = num;
+					issnake = true;
+				} else if (num == 43) {
+					num = 82;
+					curposition = num;
+					issnake = true;
+				} else if (num == 58) {
+					num = 19;
+					curposition = num;
+					issnake = true;
+				} else if (num == 62) {
+					num = 12;
+					curposition = num;
+					issnake = true;
+				} else if (num == 18) {
+					num = 14;
+					curposition = num;
+					issnake = true;
+				} else if (num == 95) {
+					num = 83;
+					curposition = num;
+					issnake = true;
+				} else if (num == 50) {
+					num = 90;
+					curposition = num;
+					issnake = true;
+				} else if (num == 100) {
+					alert("You win");
+				}
+
+				if (issnake == true) {
+					var delayInMilliseconds = 1000; //1 second
+
+					setTimeout(function () {
+						var pos = $("#box" + num).position();
+
+						$("#pawn").hide("explode", { pieces: 50 }, 1000);
+						$("#pawn").show("explode", { pieces: 50 }, 1000);
+						$("#pawn").css({
+							top: pos.top,
+							left: pos.left,
+							position: "absolute",
+						});
+						$("#btnrolldie").prop("disabled", false);
+					}, delayInMilliseconds);
+				} else {
+					$("#btnrolldie").prop("disabled", false);
+				}
+			}
+
+			function rolldie() {
+				var num = 0;
+				num = Math.floor(Math.random(1) * 6 + 1);
+				$("#num").hide(num);
+				$("#num1").hide();
+				$("#num2").hide();
+				$("#num3").hide();
+				$("#num4").hide();
+				$("#num5").hide();
+				$("#num6").hide();
+
+				if (num == 1) {
+					$("#num1").show("explode", { pieces: 16 }, 1000);
+				} else if (num == 2) {
+					$("#num2").show("explode", { pieces: 16 }, 1000);
+				} else if (num == 3) {
+					$("#num3").show("explode", { pieces: 16 }, 1000);
+				} else if (num == 4) {
+					$("#num4").show("explode", { pieces: 16 }, 1000);
+				} else if (num == 5) {
+					$("#num5").show("explode", { pieces: 16 }, 1000);
+				} else if (num == 6) {
+					$("#num6").show("explode", { pieces: 16 }, 1000);
+				}
+				$.wait(10000);
+
+				//alert($('#gamestarted').val()=="0" && num == 6)
+				if ($("#gamestarted").val() == "0" && num == 6) {
+					$("#gamestarted").val(1);
+					$("#lad1").hide("explode", { pieces: 16 }, 1000);
+					$("#lad1").show("explode", { pieces: 16 }, 1000);
+					$("#lad2").hide("explode", { pieces: 16 }, 1000);
+					$("#lad2").show("explode", { pieces: 16 }, 1000);
+					$("#lad3").hide("explode", { pieces: 16 }, 1000);
+					$("#lad3").show("explode", { pieces: 16 }, 1000);
+
+					$("#s1").hide("explode", { pieces: 16 }, 1000);
+					$("#s1").show("explode", { pieces: 16 }, 1000);
+					$("#s2").hide("explode", { pieces: 16 }, 1000);
+					$("#s2").show("explode", { pieces: 16 }, 1000);
+					$("#s3").hide("explode", { pieces: 16 }, 1000);
+					$("#s3").show("explode", { pieces: 16 }, 1000);
+					$("#s4").hide("explode", { pieces: 16 }, 1000);
+					$("#s4").show("explode", { pieces: 16 }, 1000);
+					$("#s5").hide("explode", { pieces: 16 }, 1000);
+					$("#s5").show("explode", { pieces: 16 }, 1000);
+					$("#s6").hide("explode", { pieces: 16 }, 1000);
+					$("#s6").show("explode", { pieces: 16 }, 1000);
+
+					$("#board").hide("pulsate", 1000);
+					$("#board").show("pulsate", 1000);
+
+					curposition = 1;
+					movepawn(curposition);
+				} else if ($("#gamestarted").val() == "1") {
+					//ocument.getElementById("rolldie").innerHTML = num;
+					if (curposition + num <= 100) {
+						curposition = curposition + num;
+						movepawn(curposition);
+					}
+				}
+			}
+			$.wait = function (ms) {
+				var defer = $.Deferred();
+				setTimeout(function () {
+					defer.resolve();
+				}, ms);
+				return defer;
+			};
+			let name = localStorage.getItem("name")
+				? localStorage.getItem("name")
+				: "";
+			console.log(name);
+			if (name == "") {
+				alert("You will have to sign in");
+				window.location.href = "localstorage-part3.html";
+				window.location.href = "signin.html";
+			}
+			function Logout() {
+				localStorage.removeItem("name");
+				localStorage.removeItem("email");
+				localStorage.removeItem("pwd");
+
+				window.location.href = "../index.html";
+			}
+		</script>
+
+		<input type="hidden" id="gamestarted" name="gamestarted" value="0" />
+
+		<img
+			src="../images/1.png"
+			alt="1"
+			id="num1"
+			style="display: none; width: 50px; height: 50px"
+		/>
+		<img
+			src="../images/2.png"
+			alt="2"
+			id="num2"
+			style="display: none; width: 50px; height: 50px"
+		/>
+		<img
+			src="../images/3.png"
+			alt="3"
+			id="num3"
+			style="display: none; width: 50px; height: 50px"
+		/>
+		<img
+			src="../images/4.png"
+			alt="4"
+			id="num4"
+			style="display: none; width: 50px; height: 50px"
+		/>
+		<img
+			src="../images/5.png"
+			alt="5"
+			id="num5"
+			style="display: none; width: 50px; height: 50px"
+		/>
+		<img
+			src="../images/6.png"
+			alt="6"
+			id="num6"
+			style="display: none; width: 50px; height: 50px"
+		/>
+
+		<div id="board"></div>
+		<div id="num"></div>
+		<div id="pawn">
+			<img src="../images/pawn.png" width="30px" height="60px" alt="pawn" />
+		</div>
+
+		<button id="btnrolldie" onclick="rolldie()">Roll Die</button>
+		<button onclick="Logout();" style="float: right">Logout</button>
+
+		<footer class="bg-danger text-center text-white">
+			<!-- Grid container -->
+			<div class="container p-4 pb-0">
+				<!-- Section: Social media -->
+				<section class="mb-4">
+					<!-- Facebook -->
+					<a
+						class="btn btn-outline-light btn-floating m-1"
+						href="#!"
+						role="button"
+						><i class="fa fa-facebook-f"> </i
+					></a>
+
+					<a
+						class="btn btn-outline-light btn-floating m-1"
+						href="#!"
+						role="button"
+						><i class="fa fa-twitter"></i
+					></a>
+
+					<!-- Google -->
+					<a
+						class="btn btn-outline-light btn-floating m-1"
+						href="#!"
+						role="button"
+						><i class="fa fa-google"></i
+					></a>
+
+					<!-- Instagram -->
+					<a
+						class="btn btn-outline-light btn-floating m-1"
+						href="#!"
+						role="button"
+						><i class="fa fa-instagram"></i
+					></a>
+				</section>
+				<!-- Section: Social media -->
+			</div>
+			<!-- Grid container -->
+			<!-- Copyright -->
+			<div
+				class="text-center p-3"
+				style="background-color: rgba(0, 0, 0, 0.2)"
+			></div>
+			<!-- Copyright -->
+		</footer>
+	</body>
+</html>
